@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
     <litepal>
-    <dbname value="fengyunWeather"/>
+    <dbname value="weatherInfo"/>
     <version value="1"/>
-
     <list>
-        <mappig class="com.fengyunweather.android.db.Province"/>
-        <mappig class="com.fengyunweather.android.db.City"/>
-        <mappig class="com.fengyunweather.android.db.County"/>
+        <mapping class="com.fengyunweather.android.db.Province"/>
+        <mapping class="com.fengyunweather.android.db.City"/>
+        <mapping class="com.fengyunweather.android.db.County"/>
     </list>
 </litepal>
