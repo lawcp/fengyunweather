@@ -3,7 +3,7 @@ package com.fengyunweather.android.db;
 import org.litepal.crud.DataSupport;
 
 /**
- * Created by HandsomeXu on 2017/3/6.
+ * Created by HandsomeXu on 2017/3/7.
  */
 
 public class County extends DataSupport {
@@ -44,3 +44,4 @@ public class County extends DataSupport {
         this.cityId = cityId;
     }
 }
+
