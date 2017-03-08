@@ -6,6 +6,8 @@ import android.util.Log;
 import com.fengyunweather.android.db.City;
 import com.fengyunweather.android.db.County;
 import com.fengyunweather.android.db.Province;
+import com.fengyunweather.android.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,5 +86,21 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response){
+        /**
+         * 将返回的JSON数据解析成Weather实体类
+         */
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            Weather weather = new Gson().fromJson(weatherContent,Weather.class);
+            return weather;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
