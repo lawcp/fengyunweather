@@ -3,12 +3,18 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#fff"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="?attr/colorPrimary"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true">
 
         <TextView
             android:id="@+id/title_text"
@@ -16,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#fff"
-            android:textSize="20dp"/>
+            android:textSize="25dp"/>
 
         <Button
             android:id="@+id/back_button"
@@ -25,7 +31,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@mipmap/ic_launcher"/>
+            android:background="@mipmap/ic_back"/>
     </RelativeLayout>
 
     <ListView
