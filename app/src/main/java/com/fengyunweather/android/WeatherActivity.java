@@ -65,6 +65,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= 21) {
