@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Basic {
     /**
-     * Json数据的一些字段有可能不能直接作为Java字段，使用注解让其建立映射关系
+     * Json数据的一些字段不太适合作为Java字段，使用注解让其建立映射关系
      */
     @SerializedName("city")
     public String cityName;

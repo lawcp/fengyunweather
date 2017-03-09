@@ -11,6 +11,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,6 +51,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView pm25Text;
     private TextView comfortText;
     private TextView carWashText;
+    private TextView dressText;
     private TextView sportText;
     private ImageView bingPicImg;
     public SwipeRefreshLayout swipeRefresh;
@@ -59,6 +61,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView tipsContentTextView;
     private ImageView tipsImag;
     private TextView currentLocationTextView;
+    private long exitTime = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,24 @@ public class WeatherActivity extends AppCompatActivity {
         initView();
         loadWeatherInfoAndImg();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            exit();
+        }
+        return true;
+
+    }
+    private void exit(){
+
+        if (System.currentTimeMillis() - exitTime >2000){
+            Toast.makeText(WeatherActivity.this,"再按一次退出",Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else{
+            finish();
+        }
     }
 
     private void loadWeatherInfoAndImg() {
@@ -115,6 +136,7 @@ public class WeatherActivity extends AppCompatActivity {
         comfortText = (TextView) findViewById(R.id.comfort_text);
         carWashText = (TextView) findViewById(R.id.car_wash_text);
         sportText = (TextView) findViewById(R.id.sport_text);
+        dressText = (TextView) findViewById(R.id.dress_text);
         bingPicImg = (ImageView) findViewById(R.id.bing_pic_img);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         navButton = (Button) findViewById(R.id.nav_button);
@@ -216,9 +238,11 @@ public class WeatherActivity extends AppCompatActivity {
         String comfort = "舒适度：" + weather.suggestion.comfort.info;
         String carWash = "洗车指数：" + weather.suggestion.carWash.info;
         String sport = "运动建议：" + weather.suggestion.sport.info;
+        String dress ="穿衣指数：" + weather.suggestion.dress.info;
         comfortText.setText(comfort);
         carWashText.setText(carWash);
         sportText.setText(sport);
+        dressText.setText(dress);
         weatherLayout.setVisibility(View.VISIBLE);
     }
 
